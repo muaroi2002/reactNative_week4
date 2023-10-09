@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Page1 from './views/Page1';
 import Wellcome from './views/WellCome';
+import GeneratePassword from './views/GeneratePass';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
       initialRouteName='Page1'>
         <Tab.Screen name="Page1" component={Page1} />
         <Tab.Screen name="Wellcome" component={Wellcome} />
+        <Tab.Screen name="GeneratePass" component={GeneratePassword} />
       </Tab.Navigator>
     </NavigationContainer>
   );
