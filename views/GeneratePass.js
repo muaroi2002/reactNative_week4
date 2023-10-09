@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, CheckBox, Button, StyleSheet, ScrollView } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 
 export default function GeneratePassword() {
   const [passwordLength, setPasswordLength] = useState(8);
@@ -28,6 +29,11 @@ export default function GeneratePassword() {
     }
 
     setGeneratedPassword(newPassword);
+  };
+
+  const copyPassword = () => {
+    Clipboard.setString(generatedPassword);
+    alert('Password copied to clipboard');
   };
 
   return (
@@ -74,6 +80,7 @@ export default function GeneratePassword() {
         </View>
       </View>
       <Button title="Generate Password" onPress={generatePassword} />
+      <Button title="Copy Password" onPress={copyPassword} />
       <Text style={styles.generatedPasswordText}>Generated Password: {generatedPassword}</Text>
     </ScrollView>
   );
@@ -84,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'powderblue',
+    backgroundColor: 'powderblue',
     padding: 20,
   },
   headerText: {
